@@ -1,0 +1,128 @@
+body  {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #eeeeee;
+}
+
+::selection {
+    background: rgb(127, 255, 0);
+    color: #fff;
+}
+
+button:hover {
+    transition: all .3s ease;
+    transform: scale(1.05);
+}
+
+body header .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+body header .navbar h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 56px;
+    border-bottom: 2px solid rgb(127, 255, 0);
+}
+
+body .clock {
+    padding: 100px 0;
+}
+
+body .clock .input-wrapper {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body .clock .input-wrapper .input {
+    display: flex;
+    justify-content: center;
+}
+
+body .clock .input-wrapper .input input {
+    margin-right: 10px;
+    height: 46px;
+}
+
+body .clock .input-wrapper .input select {
+    height: 46px;
+}
+
+body .clock .input-wrapper .input input:focus,
+body .clock .input-wrapper .input input:active,
+body .clock .input-wrapper .input select:focus,
+body .clock .input-wrapper .input select:active,
+body .clock .input-wrapper button:focus,
+body .clock .input-wrapper button:active {
+    outline: none;
+    box-shadow: none;
+    border-color: rgb(127, 255, 0);
+}
+
+body .clock .buttons-wrapper {
+    display: flex;
+}
+
+body .clock .input-wrapper button {
+    margin: 0 auto;
+    background-color: rgb(127, 255, 0);
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+body .clock #timer {
+    display: none;
+    padding: 100px 0;
+}
+
+body .clock #timer .clock-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+body .clock #timer .clock-wrapper span {
+    font-size: 80px;
+    font-weight: bold;
+    transition: all .2s ease;
+}
+
+body .clock button#stop-timer {
+    margin: 0 auto;
+    background-color: rgb(233, 19, 19);
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 30px;
+    display: none;
+    color: #fff;
+}
+
+body .clock button#stop-timer:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: rgb(233, 19, 19);
+}
+
+@media only screen and (max-width: 768px) {
+    body .clock {
+        padding: 25px 0;
+    }
+
+    body .clock #timer {
+        display: none;
+        padding: 25px 0;
+    }
+
+    body .clock #timer .clock-wrapper span {
+        font-size: 60px;
+    }
+}

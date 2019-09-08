@@ -37,7 +37,26 @@ $(document).ready(function(){
     })
 
     $('button#stop-timer').on('click', function() {
+        pauseClock()
+    })
+
+    $('button#reset-timer').on('click', function() {
         restartClock()
+    })
+
+    $('button#resume-timer').on('click', function() {
+      $('button#resume-timer').fadeOut(100)
+      $('button#reset-timer').fadeOut(100)
+      switch (clockType) {
+          case 'countdown':
+               countdown()
+               break
+           case 'cronometer':
+               cronometer()
+               break
+          default:
+              break;
+      }
     })
 
     function pad(d) {
@@ -57,9 +76,9 @@ $(document).ready(function(){
                 if ($(ammount).val() > 3599) {
                     let hou = Math.floor($(ammount).val() / 3600)
                     hours = hou
-                    let min = Math.floor(($(ammount).val() - (hou * 60)) / 60)
+                    let min = Math.floor(($(ammount).val() - (hou * 3600)) / 60)
                     minutes = min;
-                    let sec = ($(ammount).val() - (hou * 60)) - (min * 60)
+                    let sec = ($(ammount).val() - (hou * 3600)) - (min * 60)
                     seconds = sec
                 }
                 else if ($(ammount).val() > 59) {
@@ -90,13 +109,17 @@ $(document).ready(function(){
                 break
         }
 
+        if (seconds <= 10 && clockType == 'countdown' && minutes == 0 && hours == 0) {
+          $(timer).find('span').addClass('red')
+        }
+
         refreshClock()
 
         $('.input-wrapper').slideUp(350)
         setTimeout(function(){
             $('#timer').fadeIn(350)
             $('#stop-timer').fadeIn(350)
-            
+
         }, 350)
 
        switch (clockType) {
@@ -124,12 +147,21 @@ $(document).ready(function(){
         $(m).text('00')
         $(h).text('00')
 
-        
+        $(timer).find('span').removeClass('red')
+
         $('#timer').fadeOut(350)
         $('#stop-timer').fadeOut(100)
+        $('button#resume-timer').fadeOut(100)
+        $('button#reset-timer').fadeOut(100)
         setTimeout(function(){
-            $('.input-wrapper').slideDown(350)    
+            $('.input-wrapper').slideDown(350)
         },350)
+    }
+
+    function pauseClock() {
+      clear(interval)
+      $('#resume-timer').fadeIn()
+      $('#reset-timer').fadeIn()
     }
 
     var hasStarted = false
@@ -142,6 +174,10 @@ $(document).ready(function(){
         hasStarted = true
         interval = setInterval(() => {
             if(hasEnded == false) {
+                if (seconds <= 11 && minutes == 0 && hours == 0) {
+                  $(timer).find('span').addClass('red')
+                }
+
                 if(seconds == 0 && minutes == 0 || (hours > 0  && minutes == 0 && seconds == 0)) {
                     hours--
                     minutes = 59
@@ -178,7 +214,7 @@ $(document).ready(function(){
                 seconds = 0
                 refreshClock()
             }
-            
+
             if (minutes == 60) {
                 hours++
                 minutes = 0

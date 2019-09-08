@@ -66,6 +66,10 @@ body .clock .input-wrapper button:active {
 
 body .clock .buttons-wrapper {
     display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 body .clock .input-wrapper button {
@@ -83,6 +87,14 @@ body .clock #timer {
     display: none;
 }
 
+body .clock #timer .endMessage {
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0;
+  transition: all .35s ease;
+}
+
 body .clock #timer .clock-wrapper {
     display: flex;
     justify-content: center;
@@ -94,13 +106,52 @@ body .clock #timer .clock-wrapper span {
     transition: all .2s ease;
 }
 
+body .clock #timer .clock-wrapper span.red {
+  transition: all .2s ease;
+  color: rgb(233, 19, 19);
+  font-size: 180px;
+}
+
+body .clock #timer .clock-wrapper span.red.hours,
+body .clock #timer .clock-wrapper span.red.minutes,
+body .clock #timer .clock-wrapper span.red.dots {
+  width: 0;
+  opacity: 0;
+  transition: all .3s ease;
+}
+
 body .clock #timer .clock-wrapper span.dots {
     margin-top: -5px;
 }
 
 body .clock button#stop-timer {
-    margin: 0 auto;
+    margin: 0 10px;
     background-color: rgb(233, 19, 19);
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 30px;
+    display: none;
+    color: #fff;
+    width: 150px;
+}
+
+body .clock button#reset-timer {
+  width: 150px;
+  margin: 0;
+  background-color: #000;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 30px;
+  display: none;
+  color: #fff;
+}
+
+body .clock button#resume-timer {
+    width: 150px;
+    margin: 0;
+    background-color: rgb(127, 255, 0);
     padding: 10px 15px;
     text-transform: uppercase;
     font-weight: bold;
@@ -109,10 +160,22 @@ body .clock button#stop-timer {
     color: #fff;
 }
 
+body .clock button#resume-timer:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: rgb(127, 255, 0);
+}
+
 body .clock button#stop-timer:focus {
     outline: none;
     box-shadow: none;
     border-color: rgb(233, 19, 19);
+}
+
+body .clock button#reset-timer:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #000;
 }
 
 @media only screen and (max-width: 768px) {
@@ -131,5 +194,9 @@ body .clock button#stop-timer:focus {
 
     body .clock #timer .clock-wrapper span.dots {
         margin-top: -3px;
+    }
+
+    body .clock #timer .clock-wrapper span.red {
+      font-size: 120px;
     }
 }

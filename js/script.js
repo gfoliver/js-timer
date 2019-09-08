@@ -92,9 +92,12 @@ $(document).ready(function(){
 
         refreshClock()
 
-        $('#timer').fadeIn()
-        $('#stop-timer').slideDown()
-        $('.input-wrapper').slideUp()
+        $('.input-wrapper').slideUp(350)
+        setTimeout(function(){
+            $('#timer').fadeIn(350)
+            $('#stop-timer').fadeIn(350)
+            
+        }, 350)
 
        switch (clockType) {
            case 'countdown':
@@ -121,9 +124,12 @@ $(document).ready(function(){
         $(m).text('00')
         $(h).text('00')
 
-        $('.input-wrapper').slideDown()
-        $('#timer').fadeOut()
-        $('#stop-timer').slideUp()
+        
+        $('#timer').fadeOut(350)
+        $('#stop-timer').fadeOut(100)
+        setTimeout(function(){
+            $('.input-wrapper').slideDown(350)    
+        },350)
     }
 
     var hasStarted = false
@@ -196,15 +202,12 @@ $(document).ready(function(){
 
         if (hours == 0 && minutes == 0 && seconds == 0 && hasStarted == true) {
             hasEnded = true
+            alert('The Timer has Ended !')
         }
     }
 
     function clear(intervalID) {
         clearInterval(intervalID)
         console.log('cleared the interval called ' + intervalID)
-    }
-
-    function startCronometer() {
-
     }
 })

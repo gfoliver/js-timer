@@ -9,7 +9,7 @@ body  {
 }
 
 button:hover {
-    transition: all .3s ease;
+    transition: all .5s ease;
     transform: scale(1.05);
 }
 
@@ -17,7 +17,7 @@ body header .navbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px 0;
+    padding-top: 30px;
 }
 
 body header .navbar h1 {
@@ -81,7 +81,6 @@ body .clock .input-wrapper button {
 
 body .clock #timer {
     display: none;
-    padding: 100px 0;
 }
 
 body .clock #timer .clock-wrapper {
@@ -90,9 +89,13 @@ body .clock #timer .clock-wrapper {
 }
 
 body .clock #timer .clock-wrapper span {
-    font-size: 80px;
+    font-size: 100px;
     font-weight: bold;
     transition: all .2s ease;
+}
+
+body .clock #timer .clock-wrapper span.dots {
+    margin-top: -5px;
 }
 
 body .clock button#stop-timer {
@@ -124,5 +127,9 @@ body .clock button#stop-timer:focus {
 
     body .clock #timer .clock-wrapper span {
         font-size: 60px;
+    }
+
+    body .clock #timer .clock-wrapper span.dots {
+        margin-top: -3px;
     }
 }
